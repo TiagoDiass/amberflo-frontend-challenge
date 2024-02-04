@@ -1,18 +1,7 @@
 import { httpClient } from '../http-client';
-import { CreateMeterParams, metersService } from './meters-service';
+import { CreateMeterParams, createMeter } from './create-meter';
 
-describe('Meters Service', () => {
-	it('should get meters correctly', async () => {
-		vi.spyOn(httpClient, 'get').mockResolvedValue({
-			data: ['mocked-response'],
-		});
-
-		const meters = await metersService.getMeters();
-
-		expect(meters).toEqual(['mocked-response']);
-		expect(httpClient.get).toHaveBeenCalledWith('/meters');
-	});
-
+describe('Service method: Create Meter', () => {
 	it('should create a meter correctly', async () => {
 		vi.spyOn(httpClient, 'post').mockResolvedValue({
 			status: 201,
@@ -26,7 +15,7 @@ describe('Meters Service', () => {
 			type: 'sum',
 		};
 
-		const result = await metersService.createMeter(params);
+		const result = await createMeter(params);
 
 		expect(result.successfullyCreated).toBe(true);
 		expect(httpClient.post).toHaveBeenCalledWith('/meters', {
@@ -51,7 +40,7 @@ describe('Meters Service', () => {
 			type: 'sum',
 		};
 
-		const result = await metersService.createMeter(params);
+		const result = await createMeter(params);
 
 		expect(result.successfullyCreated).toBe(false);
 	});
