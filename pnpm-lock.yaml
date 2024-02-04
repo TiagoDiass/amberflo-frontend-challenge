@@ -18,6 +18,7 @@ specifiers:
   axios: ^1.6.7
   class-variance-authority: ^0.7.0
   clsx: ^2.1.0
+  fast-sort: ^3.4.0
   jsdom: 20.0.3
   lucide-react: ^0.321.0
   postcss: ^8.4.33
@@ -43,6 +44,7 @@ dependencies:
   axios: 1.6.7
   class-variance-authority: 0.7.0
   clsx: 2.1.0
+  fast-sort: 3.4.0
   lucide-react: 0.321.0_react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -2159,6 +2161,10 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
+
+  /fast-sort/3.4.0:
+    resolution: {integrity: sha512-c/cMBGA5mH3OYjaXedtLIM3hQjv+KuZuiD2QEH5GofNOZeQVDIYIN7Okc2AW1KPhk44g5PTZnXp8t2lOMl8qhQ==}
+    dev: false
 
   /fastq/1.17.0:
     resolution: {integrity: sha512-zGygtijUMT7jnk3h26kUms3BkSDp4IfIKjmnqI2tvx6nuBfiF1UqOxbnLfzdv+apBy+53oaImsKtMw/xYbW+1w==}

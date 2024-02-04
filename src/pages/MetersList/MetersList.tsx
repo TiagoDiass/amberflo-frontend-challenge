@@ -8,12 +8,11 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table';
-import { metersService } from '@/services/meters-service/meters-service';
-import { useMetersStore } from '@/store/use-meters-store';
 import { Meter } from '@/types/meters';
 import { formatters } from '@/utils/formatters';
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { SortingIcon } from './SortingIcon';
+import { useMetersList } from './useMetersList';
 
 type TableColumns = Array<{
 	title: string;
@@ -30,26 +29,12 @@ const tableColumns: TableColumns = [
 ];
 
 export function MetersList() {
-	const [meters, setMeters] = useState<Meter[]>([]);
-	const setCurrentMeter = useMetersStore(
-		(store) => store.actions.setCurrentMeter,
-	);
-	const navigate = useNavigate();
-
-	function navigateToMeterDetails(meter: Meter) {
-		setCurrentMeter(meter);
-		navigate(`/meters/${meter.id}/details`);
-	}
-
-	useEffect(() => {
-		async function fetchMeters() {
-			const metersResponse = await metersService.getMeters();
-
-			setMeters(metersResponse);
-		}
-
-		fetchMeters();
-	}, []);
+	const {
+		sortedMeters,
+		sortOptions,
+		handleSortMeters,
+		navigateToMeterDetails,
+	} = useMetersList();
 
 	return (
 		<div className="max-w-screen-lg mx-auto px-6">
@@ -65,13 +50,26 @@ export function MetersList() {
 				<TableHeader>
 					<TableRow>
 						{tableColumns.map((column) => (
-							<TableHead key={column.field}>{column.title}</TableHead>
+							<TableHead key={column.field}>
+								<div className="flex items-center gap-2">
+									{column.title}
+
+									<Button
+										variant="ghost"
+										size="sm"
+										onClick={() => handleSortMeters(column.field)}
+										title={`Sort table by ${column.title} field`}
+									>
+										<SortingIcon field={column.field} options={sortOptions} />
+									</Button>
+								</div>
+							</TableHead>
 						))}
 					</TableRow>
 				</TableHeader>
 
 				<TableBody>
-					{meters.map((meter) => (
+					{sortedMeters.map((meter) => (
 						<TableRow
 							key={meter.id}
 							onClick={() => navigateToMeterDetails(meter)}
