@@ -15,14 +15,7 @@ import { metersService } from '@/services/meters-service/meters-service';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import { FormEvent, MouseEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-type MeterFormSchema = {
-	displayName: string;
-	apiName: string;
-	type?: 'sum' | 'max' | 'unique_count';
-	isActive: boolean;
-	usedForBilling: boolean;
-};
+import { MeterFormSchema, validateMeterForm } from './CreateMeter.validator';
 
 export function CreateMeter() {
 	const navigate = useNavigate();
@@ -45,6 +38,17 @@ export function CreateMeter() {
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement> | MouseEvent) {
 		event.preventDefault();
+
+		const isFormValid = validateMeterForm(form);
+
+		if (!isFormValid) {
+			toast({
+				variant: 'destructive',
+				title: 'Oops',
+				description: 'Missing required fields for the form.',
+			});
+			return;
+		}
 
 		setIsLoading(true);
 
