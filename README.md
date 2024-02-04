@@ -73,7 +73,7 @@ So I decided to use a components library, because if I made all these components
 
 - Since I managed to develop the features in less than the expected time, I decided to add unit tests for the application, this led me to take a little bit longer to complete the challenge, but in return, the application code is much less prone to bugs. I am writing more about the tests in the section below: <a href="#tests">Tests</a>
 
-- I decided to not use an HTTP state management library like [react-query](https://tanstack.com/query/v3/) to keep the code simpler.
+- In order to keep the code simpler, I decided to not use an HTTP state management library like [react-query](https://tanstack.com/query/v3/).
 
 <h2 id="features" name="features">
   📋 Features
