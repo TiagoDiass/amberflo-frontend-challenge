@@ -1,12 +1,16 @@
 import { Header } from '@/components/Header/Header';
+import { Toaster } from '@/components/ui/toaster';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { MeterDetails } from './pages/MeterDetails/MeterDetails';
-import { MetersList } from './pages/MetersList/MetersList';
+import { CreateMeter, MeterDetails, MetersList } from './pages';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <MetersList />,
+	},
+	{
+		path: '/create-meter',
+		element: <CreateMeter />,
 	},
 	{
 		path: '/meters/:meterId/details',
@@ -19,6 +23,7 @@ export function Routes() {
 		<>
 			<Header />
 			<RouterProvider router={router} />
+			<Toaster />
 		</>
 	);
 }
