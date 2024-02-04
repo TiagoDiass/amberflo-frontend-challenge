@@ -58,7 +58,7 @@ Some screenshots from the application ⬇️
   ⚖️ Decisions I took throughout the process
 </h2>
 
-- At first, I thought carefully about using or not an UI components library, however, when I thought how the pages would like, and that I would need to have a lot of components, such as:
+- At first, I thought carefully about using or not an UI components library, however, when I thought how the pages would look, I realized I would need to have a lot of components, such as:
   - Table
   - Label
   - Input
@@ -67,7 +67,7 @@ Some screenshots from the application ⬇️
   - Button
   - Toasts
 
-I decided to use a components library, because if I made myself all these components, the time taken for challenge would surely be more than the expected. The components library I chose was [shadcn/ui](https://ui.shadcn.com/) because of its great developer experience and simplicity.
+So I decided to use a components library, because if I made all these components myself, the time spent on the challenge would surely be more than the expected. The components library I chose was [shadcn/ui](https://ui.shadcn.com/) because of its great developer experience and simplicity.
 
 - Since the form we have in the application would be very simple, I decided to not use a form management library in order to keep the code simpler and finish the challenge on time. The libraries that I would use to do this form validation are: [react-hook-form](https://github.com/react-hook-form/react-hook-form) and [zod](https://zod.dev/).
 
@@ -92,6 +92,7 @@ As I mentioned before, since I managed to finish developing the features in less
 I added unit tests for pretty much everything I've coded myself. I just didn't add unit tests for the components under the `/src/components/ui` folder because those components are the ones taken from [shadcn/ui](https://ui.shadcn.com/), but even though I didn't add tests for them, their code was covered by other tests.
 
 **The final code coverage of the application was 95%:**
+
 <img width="600" src="screenshots/code-coverage.jpg" />
 
 <h2 id="deploy" name="deploy">
