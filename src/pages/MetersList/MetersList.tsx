@@ -8,12 +8,12 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table';
+import { metersService } from '@/services/meters-service/meters-service';
+import { useMetersStore } from '@/store/use-meters-store';
 import { Meter } from '@/types/meters';
 import { formatters } from '@/utils/formatters';
-import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useMetersStore } from '@/store/use-meters-store';
-import { metersService } from '@/services/meters-service/meters-service';
+import { Link, useNavigate } from 'react-router-dom';
 
 type TableColumns = Array<{
 	title: string;
